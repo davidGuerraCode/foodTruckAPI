@@ -1,0 +1,21 @@
+{
+  "name": "foodtruckapi",
+  "version": "0.0.1",
+  "description": "API for food truck's",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "author": "David Vásquez",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.17.6",
+    "pg": "^7.11.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.1"
+  }
+}
