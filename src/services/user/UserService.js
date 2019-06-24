@@ -19,10 +19,28 @@ const signUp = async user => {
   }
 };
 
-const listUsers = async (offset, limit, fields) => {
-  const users = await knex.select('*').from('user');
+const listUsers = async queryOptions => {
+  let { offset, limit, fields } = queryOptions;
+  offset = Number(offset);
+  limit = Number(limit);
+  limit = Math.min(limit, 50);
+  fields = fields ? fields.split(',') : undefined;
 
-  return users;
+  const usersRecordList = UserModel.listUsers(offset, limit, fields);
+
+  return usersRecordList;
 };
 
-module.exports = { listUsers, signUp };
+const updateUser = async (id, payload) => {
+  const updatedUserRecord = await UserModel.updateUser(id, payload);
+
+  return updatedUserRecord;
+};
+
+const deleteUser = async id => {
+  const deletedUserRecord = await UserModel.deleteUser(id);
+
+  return deletedUserRecord;
+};
+
+module.exports = { listUsers, signUp, updateUser, deleteUser };
